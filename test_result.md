@@ -245,3 +245,5 @@
 ## agent_communication:
     - agent: "main"
       message: "Built complete real-time streaming application with both text and video streaming modes. Backend includes session management, WebSocket connections for text/stream signaling, and REST APIs. Frontend has Ukrainian UI with mode selection, text session management, and WebRTC video streaming. Homepage UI verified working. Ready for backend testing first, then frontend testing."
+    - agent: "testing"
+      message: "Backend testing completed. HTTP APIs (Session Management, Text Messages) are fully working with proper MongoDB integration. WebSocket connections fail due to Kubernetes ingress timeout configuration - need nginx.ingress.kubernetes.io/proxy-read-timeout and related annotations. Backend WebSocket code is correctly implemented. Infrastructure fix required for real-time features."
