@@ -257,7 +257,7 @@ class BackendTester:
         # Test 1: Broadcaster connection
         try:
             broadcaster_url = f"{WS_BASE_URL}/ws/stream/{session_id}/broadcaster"
-            async with websockets.connect(broadcaster_url) as websocket:
+            async with websockets.connect(broadcaster_url, open_timeout=10) as websocket:
                 # Send a test signal
                 test_signal = {"type": "offer", "data": "test_offer_data"}
                 await websocket.send(json.dumps(test_signal))
