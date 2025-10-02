@@ -286,7 +286,7 @@ class BackendTester:
             viewer_url = f"{WS_BASE_URL}/ws/stream/{session_id}/viewer"
             
             async def broadcaster_client():
-                async with websockets.connect(broadcaster_url) as websocket:
+                async with websockets.connect(broadcaster_url, open_timeout=10) as websocket:
                     # Send signal from broadcaster
                     signal = {"type": "offer", "data": "broadcaster_signal"}
                     await websocket.send(json.dumps(signal))
