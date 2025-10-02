@@ -203,7 +203,7 @@ class BackendTester:
         
         # Test 1: Basic WebSocket connection
         try:
-            async with websockets.connect(ws_url) as websocket:
+            async with websockets.connect(ws_url, open_timeout=10) as websocket:
                 # Send ping message
                 ping_message = {"type": "ping"}
                 await websocket.send(json.dumps(ping_message))
