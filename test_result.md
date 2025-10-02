@@ -234,11 +234,11 @@
 
 ## test_plan:
   current_focus:
-    - "Session Management API"
     - "WebSocket Text Streaming" 
     - "WebSocket Stream Signaling"
-    - "Text Messages API"
-  stuck_tasks: []
+  stuck_tasks: 
+    - "WebSocket Text Streaming"
+    - "WebSocket Stream Signaling"
   test_all: false
   test_priority: "high_first"
 
