@@ -223,7 +223,7 @@ class BackendTester:
         # Test 2: Multiple connections (simulate real-time messaging)
         try:
             async def client_handler(client_id):
-                async with websockets.connect(ws_url) as websocket:
+                async with websockets.connect(ws_url, open_timeout=10) as websocket:
                     # Keep connection alive for a short time
                     await asyncio.sleep(1)
                     return f"Client {client_id} connected successfully"
