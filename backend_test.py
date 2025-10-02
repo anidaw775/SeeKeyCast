@@ -293,7 +293,7 @@ class BackendTester:
                     await asyncio.sleep(2)  # Keep connection alive
             
             async def viewer_client():
-                async with websockets.connect(viewer_url) as websocket:
+                async with websockets.connect(viewer_url, open_timeout=10) as websocket:
                     try:
                         # Wait for signal from broadcaster
                         response = await asyncio.wait_for(websocket.recv(), timeout=3.0)
