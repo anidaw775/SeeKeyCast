@@ -270,7 +270,7 @@ class BackendTester:
         # Test 2: Viewer connection
         try:
             viewer_url = f"{WS_BASE_URL}/ws/stream/{session_id}/viewer"
-            async with websockets.connect(viewer_url) as websocket:
+            async with websockets.connect(viewer_url, open_timeout=10) as websocket:
                 # Send a test signal
                 test_signal = {"type": "answer", "data": "test_answer_data"}
                 await websocket.send(json.dumps(test_signal))
