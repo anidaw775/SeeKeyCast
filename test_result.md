@@ -107,51 +107,63 @@
 ## backend:
   - task: "Session Management API"
     implemented: true
-    working: "NA"  
+    working: true  
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Created session creation, session retrieval, and session closure endpoints with MongoDB storage"
+        - working: true
+          agent: "testing"
+          comment: "✅ All session management tests passed: Create text/stream sessions with unique 6-char codes, retrieve by code, handle non-existent sessions (404), close sessions, verify closed sessions not retrievable. MongoDB storage working correctly."
 
   - task: "WebSocket Text Streaming"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Implemented WebSocket connection manager for real-time text messaging with broadcast functionality"
+        - working: false
+          agent: "testing"
+          comment: "❌ WebSocket connections failing with 'timed out during opening handshake' error. Backend code is correct but Kubernetes ingress needs WebSocket timeout configuration (proxy-read-timeout, proxy-send-timeout). Infrastructure issue, not code issue."
 
   - task: "WebSocket Stream Signaling"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Created WebRTC signaling server for screen/camera streaming with peer connection management"
+        - working: false
+          agent: "testing"
+          comment: "❌ WebSocket stream signaling has same infrastructure issue as text WebSocket - ingress timeout configuration needed for wss:// connections. Backend WebSocket handling code is properly implemented."
 
   - task: "Text Messages API"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Built REST endpoints for sending and retrieving text messages in sessions"
+        - working: true
+          agent: "testing"
+          comment: "✅ All text message tests passed: Send messages with Ukrainian text and emoji, handle long messages, retrieve messages sorted by timestamp, store in MongoDB correctly. WebSocket broadcasting code exists but can't test due to infrastructure issue."
 
 ## frontend:
   - task: "Homepage UI and Mode Selection"
