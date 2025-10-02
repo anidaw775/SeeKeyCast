@@ -11,7 +11,7 @@ async def test_simple_ws():
     print(f"Testing WebSocket connection to: {ws_url}")
     
     try:
-        async with websockets.connect(ws_url, timeout=10) as websocket:
+        async with websockets.connect(ws_url, open_timeout=10) as websocket:
             print("✅ WebSocket connected successfully!")
             
             # Send ping
